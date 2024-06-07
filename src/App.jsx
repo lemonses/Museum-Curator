@@ -1,15 +1,17 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Header from './components/Header'
-import ExhibitContainer from './components/exhibits/ExhibitContainer'
 import Home from './components/Home'
+import MyExhibit from './components/MyExhibit'
 
 function App() {
 
   return <>
     <Header/>
     <Routes>
-      <Route path='/' element={<Home/>}></Route>
+      <Route path='/' element={<Home search="painting"/>}></Route>
+      <Route path='/search/:searchTerm/:page' element={<Home/>}></Route>
+      <Route path='/myExhibit' element={<MyExhibit/>}></Route> 
     </Routes>
     
   </>

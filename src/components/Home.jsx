@@ -1,12 +1,16 @@
-import { useState } from "react"
 import SearchBar from "./SearchBar"
 import ExhibitContainer from "./exhibits/ExhibitContainer"
+import { useParams } from "react-router-dom"
 
-function Home (){
-    const [search, setSearch] = useState("painting")
+function Home ({search}){
+    let page
+    if (!search){
+        search = useParams().searchTerm
+        page = useParams().page
+    }else page = 1
     return (<>
-        <SearchBar setSearch={setSearch}/>
-        <ExhibitContainer searchTerm={search}/>
+        <SearchBar/>
+        <ExhibitContainer searchTerm={search} page={page}/>
     </>)
 }
 

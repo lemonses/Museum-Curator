@@ -1,29 +1,32 @@
 import  Button  from "react-bootstrap/Button"
-import noImage from "../../NoImage.png"
-import ExhibitModal from "./ExhibitModal"
-import { useState } from "react"
+import { formatResponse } from "../../api/utilities"
+import { useEffect, useState } from "react"
+import { getObject } from "../../api/api"
 
-function ExhibitTile({exhibit}){
-    const [show, setShow] = useState(false)
-
-    const handleClose = () => setShow(false)
-    const handleShow = () => setShow(true)
-
-    const imageidentifier = exhibit._primaryImageId
-    if (imageidentifier){
-        exhibit.image = `https://framemark.vam.ac.uk/collections/${imageidentifier}/full/600,400/0/default.jpg`
+function ExhibitTile({exhibit,setShow,setModalExhibit}){
+    const [currExhibit,setCurrExhibit] = useState(exhibit)
+    const handleShow = () => {
+        setModalExhibit(currExhibit)
+        setShow(true)
     }
-    else{
-        exhibit.image = noImage
-    }
+
+    useEffect(()=>{
+        if(typeof(exhibit) === "number"){
+            getObject(exhibit)
+            .then(response => {
+                setCurrExhibit(formatResponse(response.data))
+            })
+        }else{
+            setCurrExhibit(formatResponse(exhibit))
+        }
+    },[])
     
     return(
         <>
-            <p>{exhibit._primaryTitle}</p>
+            <p>{currExhibit.title}</p>
             <Button variant="primary" onClick={handleShow}>
-                <img src={exhibit.image} alt="" />
+                <img src={currExhibit.image} alt="" />
             </Button>
-            <ExhibitModal exhibit={exhibit} show={show} onHide={handleClose}/>
         </>
     )
 }

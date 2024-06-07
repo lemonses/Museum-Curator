@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react"
+import {useState} from "react"
+import { useNavigate } from "react-router-dom"
 
-function SearchBar({search,setSearch}) {
+function SearchBar() {
+    const navigate = useNavigate()
     const [currSearch, setCurrSearch] = useState('')
 
     function updateSearch(e){
@@ -9,7 +11,9 @@ function SearchBar({search,setSearch}) {
     }
 
     function search() {
-        setSearch(currSearch)
+        if(currSearch){
+            navigate(`/search/${currSearch}/1`)
+        }
     }
 
     return <div>
