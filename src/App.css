@@ -54,6 +54,7 @@ button:hover {
   border-radius: 8px;
   width: 300px;
   height: auto;
+  max-height: 200px;
 }
 
 .gallery-item {

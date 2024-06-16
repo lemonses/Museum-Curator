@@ -12,8 +12,9 @@ export function formatResponse(exhibit){
         exhibitFormatted.onDisplay = true
         exhibitFormatted.title = exhibit.title
         exhibitFormatted.artist = exhibit.artistDisplayName
-        if(exhibit.PrimaryImage){
-            exhibitFormatted.image = exhibit.PrimaryImage
+        if(exhibit.primaryImage){
+            console.log('here')
+            exhibitFormatted.image = exhibit.primaryImage
         }else{
             exhibitFormatted.image = noImage
         }
