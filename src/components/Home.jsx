@@ -1,4 +1,3 @@
-import SearchBar from "./SearchBar"
 import ExhibitContainer from "./exhibits/ExhibitContainer"
 import { useParams } from "react-router-dom"
 

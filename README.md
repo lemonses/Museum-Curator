@@ -1,8 +1,12 @@
-# React + Vite
+The deployed version of this repository can be found at https://museum-curator.netlify.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+this project requires a minimum of node v20.4.0 to run
 
-Currently, two official plugins are available:
+to clone this repository using your terminal navigate to an appropriate directory and enter the command below
+git clone https://github.com/lemonses/Museum-Curator.git
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Once the repo has been installed you must run
+npm install
+this will intall the required dependencies
+
+then run the command npm run dev and follow the link to use your browser as the runtime environment
