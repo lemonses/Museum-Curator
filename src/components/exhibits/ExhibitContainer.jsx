@@ -19,12 +19,11 @@ function ExhibitContainer({searchTerm,page}){
         setIsLoading(true)
         Promise.all([getMetObjects(searchTerm,page),getVaObjects(searchTerm,page)])
         .then((objects)=>{
-            console.log(objects[0])
             if(objects[0] !== 'no results'){
                 const vaTotal = objects[1][1]
                 const metTotal = objects[0].pop()
                 const newMaxPage = Math.ceil(Math.min(metTotal/20,vaTotal/20))
-                setExhibits(objects[1][0].concat(objects[0]))
+                setExhibits(objects[0].concat(objects[1][0]))
                 setMaxPage(newMaxPage)
                 setModalExhibit(formatResponse(objects[1][0][0]))
                 setIsLoading(false)
@@ -40,7 +39,6 @@ function ExhibitContainer({searchTerm,page}){
             } 
         })
         .catch(err=>{
-            console.log(err)
             setError(err)
             setIsLoading(false)
         })
