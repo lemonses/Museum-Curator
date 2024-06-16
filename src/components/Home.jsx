@@ -9,7 +9,6 @@ function Home ({search}){
         page = useParams().page
     }else page = 1
     return (<>
-        <SearchBar/>
         <ExhibitContainer searchTerm={search} page={page}/>
     </>)
 }

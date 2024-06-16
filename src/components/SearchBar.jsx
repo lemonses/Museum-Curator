@@ -13,12 +13,13 @@ function SearchBar() {
     function search() {
         if(currSearch){
             navigate(`/search/${currSearch}/1`)
+            setCurrSearch('')
         }
     }
 
     return <div>
-        <input type="text" onChange={updateSearch} value={currSearch} placeholder="Search Here"></input>
-        <button onClick={search}>Search</button>
+        <input id='searchBar' type="text" onChange={updateSearch} value={currSearch} placeholder="Search Here"></input>
+        <button className="nav-button" onClick={search}>Search</button>
     </div> 
 }
 

@@ -9,22 +9,50 @@ function ExhibitModal({exhibit,show,onHide}) {
         setUserExhibit(userExhibit => [...userExhibit,exhibit])
         onHide()
     }
-    return(<>
-        <Modal show={show} centered>
-            <Modal.Header>
+    function removeFromExhibit(){
+        setUserExhibit(userExhibit =>{
+            let userCopy = [...userExhibit]
+            const arrayNum = userExhibit.indexOf(exhibit)
+            userCopy.splice(arrayNum,1)
+            return userCopy
+        })
+        onHide()
+    }
+
+    function addToExhibitButton(){
+        const inExhibit = userExhibit.map((user)=>{
+            if (user.id === exhibit.id){
+                return true
+            }
+        })
+        if(inExhibit.includes(true)){
+            return <Button className="nav-button" onClick={removeFromExhibit}>Remove from personal exhibit</Button>
+        }else return <Button className="nav-button" onClick={addToExhibit}>Add to personal exhibit</Button>
+    }
+
+    return(<div>
+        <Modal show={show} onHide={onHide} size="lg">
+            <Modal.Header closeButton>
                 <Modal.Title>{exhibit.title}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <div>
+                <div className="custom-modal">
                     <img src={exhibit.image}></img>
-                    <p>Created by {exhibit.artist}</p>
+                    <p>{exhibit.material} by {exhibit.artist} {exhibit.date}</p>
+                    {exhibit.onDisplay? (
+                        <p>{exhibit.displayTag}</p>
+                    ):<p>This piece is currently not on display</p>}
+                    {exhibit.link !== "link unknown"?(
+                        <p>View more about this piece <a href={exhibit.link}>here</a></p>
+                    ):<p>The link to this piece could not be found</p>}
+                    
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={onHide}>Close</Button><Button onClick={addToExhibit}>Add to personal exhibit</Button>
+                <Button className="nav-button" onClick={onHide}>Close</Button>{addToExhibitButton()}
             </Modal.Footer>
         </Modal>
-    </>)
+    </div>)
 }
 
 export default ExhibitModal
