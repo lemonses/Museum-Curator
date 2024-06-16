@@ -12,7 +12,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Home search="painting"/>}></Route>
       <Route path='/search/:searchTerm/:page' element={<Home/>}></Route>
-      <Route path='/myExhibit' element={<MyExhibit/>}></Route> 
+      <Route path='/myExhibit' element={<MyExhibit/>}></Route>
     </Routes>
     
   </>
