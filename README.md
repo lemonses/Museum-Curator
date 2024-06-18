@@ -7,6 +7,6 @@ git clone https://github.com/lemonses/Museum-Curator.git
 
 Once the repo has been installed you must run
 npm install
-this will intall the required dependencies
+this will install the required dependencies
 
 then run the command npm run dev and follow the link to use your browser as the runtime environment
