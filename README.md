@@ -10,7 +10,7 @@ to run this repository locally you must follow these steps below.
 git clone https://github.com/lemonses/Museum-Curator.git
 
 2. Once the repo has been installed you must run the command 
-npm install
+'npm install'
 this will install the required dependencies
 
-3. Finally run the command npm run dev and follow the link to use your browser as the runtime environment
+3. Finally run the command 'npm run dev' and follow the link in your terminals output to use your browser as the runtime environment
